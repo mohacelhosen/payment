@@ -51,8 +51,13 @@ public class BankAccountService {
         });
     }
 
-    public void deleteBankAccount(String accountId) {
-        bankAccountRepository.deleteById(accountId);
+    public String deleteBankAccount(String accountNumber) {
+        Optional<BankAccount> optionalBankAccount = bankAccountRepository.findByAccountNumber(accountNumber);
+        if (optionalBankAccount.isEmpty()){
+            throw new RuntimeException("Account Not Found!");
+        }
+        bankAccountRepository.delete(optionalBankAccount.get());
+        return "Bank account :"+accountNumber+"  delete successfully ";
     }
 
     @Transactional

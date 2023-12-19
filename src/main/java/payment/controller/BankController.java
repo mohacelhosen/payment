@@ -65,12 +65,12 @@ public class BankController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<ApiResponse<Void>> deleteBankAccount(@RequestParam String id) {
+    public ResponseEntity<ApiResponse<Void>> deleteBankAccount(@RequestParam String accountNumber) {
         try {
-            bankAccountService.deleteBankAccount(id);
-            return ResponseEntity.ok(new ApiResponse<>(HttpStatus.OK.value(), "Bank account deleted successfully", null, null, "/api/v1/bank/delete/" + id));
+            String account = bankAccountService.deleteBankAccount(accountNumber);
+            return ResponseEntity.ok(new ApiResponse<>(HttpStatus.OK.value(), account, null, null, "/api/v1/bank/delete/" + accountNumber));
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse<>(HttpStatus.BAD_REQUEST.value(), e.getMessage(), null, null, "/api/v1/bank/delete/" + id));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse<>(HttpStatus.BAD_REQUEST.value(), e.getMessage(), null, null, "/api/v1/bank/delete/" + accountNumber));
         }
     }
 }
