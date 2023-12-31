@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: payment.ApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.710 s -- in payment.ApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.141 s -- in payment.ApplicationTests
